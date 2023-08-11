@@ -20,5 +20,6 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("",include('authentication.urls')),
-    path('home',views.home, name='home page'),
+    path("",include('dsaGrind.urls')),
+  
 ]

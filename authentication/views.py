@@ -50,3 +50,6 @@ def signup(request):
 
 def signout(request):
     return render(request,"authentication/signout.html")
+
+def logoutPage(request):
+    return redirect('signin')
