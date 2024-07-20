@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class problem(models.Model):
-    name = models.CharField(max_length=500)
+    name = models.CharField(max_length=5000)
     desc = models.TextField()
     difficulty = models.CharField(max_length=200)
 class testcase(models.Model):

@@ -4,19 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-   <form action="/home">
-
-
-<label for=""> Username </label>
-<input type="text" id = "ussername" name ="ussername" placeholder="Enter your username">
-<label for=""> Password </label>
-<input type="password" id = "pass1" name ="pass1"  placeholder="Enter your password">
-
- <button type="submit"><a>signin</a></button>
-
-   </form>
+    <form method="POST" action="{%url 'signin'%}">
+      {% csrf_token %}
+      {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        
+        <button type="submit">Sign In</button>
+    </form>
 </body>
-</html> 
+</html>

@@ -11,84 +11,83 @@
 
   <!-- Custom CSS -->
   <style>
-    /* Body background color */
     body {
       background-color: #f8f9fa;
       font-family: 'Arial', sans-serif;
     }
 
-    /* Header style */
-    .header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-      background-color: #007bff;
+    .navbar-custom {
+      background-color: #0b0d0b;
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
       color: #fff;
-      padding: 10px;
     }
 
-    /* Logout button style */
-    .logout-btn {
-      background-color: #0056b3;
-      color: #fff;
-      border: none;
-    }
-
-    .logout-btn:hover {
-      background-color: #003d80;
-    }
-
-    /* Problems list style */
     .problems {
       margin-top: 30px;
     }
 
     .problemsList {
-      padding: 10px;
-      border: 1px solid #ccc;
+      padding: 15px;
+      border: 1px solid #ddd;
       border-radius: 5px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .problemname {
-      margin-bottom: 10px;
       font-size: 18px;
       color: #007bff;
     }
 
-    /* Responsive styling */
-    @media (max-width: 576px) {
-      /* Add responsive styles here if needed */
+    .footer {
+      margin-top: 30px;
+      padding: 10px;
+      text-align: center;
+      background-color: #f1f1f1;
+      border-top: 1px solid #ddd;
     }
   </style>
 
-  <title>Home Page</title>
+  <title>AlgoSphere - Problems</title>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>CodeAvita</h1>
-      <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary logout-btn">Logout</button>
-      </form>
-    </div>
-
-    <div class="problems mt-4">
-      <h2>List of Problems</h2>
-      <ul>
-        {% for prob in probs %}
-        <div class="problemsList">
-          <div class="problemname">
-            <a href="{% url 'problem_description' prob.id %}">{{ prob.name }} ({{ prob.difficulty }})</a>
-          </div>
-        </div>
-        {% endfor %}
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">AlgoSphere</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <form action="{% url 'signout' %}" method="post" class="form-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light">Logout</button>
+          </form>
+        </li>
       </ul>
     </div>
+  </nav>
+
+  <div class="container">
+    <div class="problems mt-4">
+      <h2 class="text-center">List of Problems</h2>
+      {% if probs %}
+        <div class="list-group">
+          {% for prob in probs %}
+          <a href="{% url 'problem_description' prob.id %}" class="list-group-item list-group-item-action problemsList">
+            <div class="problemname">{{ prob.name }} ({{ prob.difficulty }})</div>
+          </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-center">No problems found.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2024 AlgoSphere. All Rights Reserved.</p>
   </div>
 
   <!-- Optional JavaScript -->

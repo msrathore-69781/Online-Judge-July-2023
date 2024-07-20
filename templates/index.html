@@ -4,15 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 40px;
+            font-size: 24px;
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>welcom to my online judge project. I am very happy to interact with you</h1>
-<button type="submit"><a href="/signup">signUp</a></button>
-<button type="submit"><a href="/signin">signIn</a></button>
-<button type="submit">signUp</button>
-  
-
+    <h1>Welcome to my AlgoSphere. I am very happy to interact with you</h1>
+    <div class="button-container">
+        <form>
+        <button type="submit"><a href="{%url 'signup'%}">Sign Up</a></button>
+        <button type="submit"><a href="{%url 'signin'%}">Sign In</a></button>
+        </form>
+        
+    </div>
 </body>
-
 </html>

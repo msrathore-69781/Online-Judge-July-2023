@@ -4,27 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-   <form action="signin">
-       {% csrf_token %}
-
-<label for=""> Username </label>
-<input type="text" id = "ussername" name ="ussername" placeholder="Create a username">
-<label for=""> First Name </label>
-<input type="text" id = "fname" name ="fname"  placeholder="enter your first name">
-<label for=""> Last Name </label>
-<input type="text" id = "lname" name ="lname"  placeholder="enter your last name">
-<label for=""> Email Address </label> 
-<input type="text" id = "email" name ="email"  placeholder="enter your email">
-<label for=""> Password </label>
-<input type="password" id = "pass1" name ="pass1"  placeholder="Create a password">
-<label for=""> Confirm your Password </label>
-<input type="password" id = "pass2" name ="pass2"  placeholder="Verify your password">
- <button type="submit"> signup</button>
- 
-
-   </form>
+    <form action="{%url 'signup'%}" method="post">
+        {% csrf_token %}
+        
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Create a username">
+        
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="Enter your first name">
+        
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter your last name">
+        
+        <label for="email">Email Address</label> 
+        <input type="text" id="email" name="email" placeholder="Enter your email">
+        
+        <label for="pass1">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Create a password">
+        
+        <label for="pass2">Confirm your Password</label>
+        <input type="password" id="pass2" name="pass2" placeholder="Verify your password">
+        
+        <button type="submit" >Sign Up</button>
+    </form>
 </body>
 </html>

@@ -20,12 +20,13 @@
     /* Header style */
     .header {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       margin-top: 20px;
-      background-color: #007bff;
+      background-color: #0c0d0f;
       color: #fff;
-      padding: 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
     }
 
     /* Logo style */
@@ -34,35 +35,65 @@
       height: 30px;
     }
 
-    /* Logo position in the header */
-    .header-logo {
-      display: flex;
-      align-items: center;
-    }
-
     /* Logout button style */
     .logout-btn {
-      background-color: #0056b3;
+      background-color: #0d0e10;
       color: #fff;
       border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
     }
 
     .logout-btn:hover {
-      background-color: #003d80;
+      background-color: #1c1f22;
     }
 
     /* Problem description style */
     .problemDescription {
       margin-top: 30px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .problemDescription h2 {
+      color: #9d1717;
     }
 
     /* Code submission style */
     .code-submission {
       margin-top: 30px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .form-group {
       margin-bottom: 20px;
+    }
+
+    .form-control {
+      border-radius: 5px;
+    }
+
+    .btn-primary {
+      background-color: #9ba5a9;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #7b7e82;
+    }
+
+    .btn-secondary {
+      background-color: #123553;
+      border: none;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
     }
 
     /* Responsive styling */
@@ -70,6 +101,14 @@
       .logo {
         width: 20px;
         height: 20px;
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .code-submission, .problemDescription {
+        padding: 15px;
       }
     }
   </style>
@@ -81,13 +120,13 @@
     <div class="header">
       <div class="header-logo">
         <div class="logo">
-          {% comment %} <img src="{% static 'logo.png' %}" alt="CodeAvita Logo"> {% endcomment %}
+          {% comment %} <img src="{% static 'logo.png' %}" alt="AlgoSphere Logo"> {% endcomment %}
         </div>
-        <h1>CodeAvita</h1>
+        <h1>AlgoSphere</h1>
       </div>
-      <form action="{% url 'logout' %}" method="post">
+      <form action="{% url 'signout' %}" method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-primary logout-btn">Logout</button>
+        <button type="submit" class="btn logout-btn">Logout</button>
       </form>
     </div>
 
