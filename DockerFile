@@ -64,19 +64,27 @@
 
 
 # Use the official Python image from the Docker Hub
-FROM python:3.9
+FROM python:3.9.12
 
 # Set environment variables
+# understand the meaning of below given 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set the working directory
-WORKDIR /code
+WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt /code/
+COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Copy the project code
-COPY . /code/
+COPY . /app/ 
+
+
+# Expose the port the app runs on
+EXPOSE 8000
+
+# Start the Django server
+CMD ["python", "manage.py", "runserver"]

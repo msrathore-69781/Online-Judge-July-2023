@@ -58,7 +58,7 @@ def submit_code(request, problem_id):
 
         # Check if the file exists before attempting to compile.
         if os.path.exists(file_path):
-            # Use 'question_id' to filter test cases related to the problem.
+            # Use 'question_id' to filteadr test cases related to the problem.
             testcases = testcase.objects.filter(question_id=problem_id)
 
             # Create a list of test cases to pass to the run_cppfile function.
@@ -72,15 +72,15 @@ def submit_code(request, problem_id):
         else:
             # Handle the case where the file doesn't exist.
             return HttpResponse("Failed to write code to compile1.cpp")
-    elif language == "java":
-        # Use 'question_id' to filter test cases related to the problem.
-        testcases = testcase.objects.filter(question_id=problem_id)
+    # elif language == "java":
+    #     # Use 'question_id' to filter test cases related to the problem.
+    #     testcases = testcase.objects.filter(question_id=problem_id)
 
-        # Create a list of test cases to pass to the run_javafile function.
-        input_data = [{'input': tc.test, 'result': tc.result} for tc in testcases]
+    #     # Create a list of test cases to pass to the run_javafile function.
+    #     input_data = [{'input': tc.test, 'result': tc.result} for tc in testcases]
 
-        # Run the Java code and get the verdict and test results.
-        verdict, test_results = run_javafile(input_data, code)
+    #     # Run the Java code and get the verdict and test results.
+    #     verdict, test_results = run_javafile(input_data, code)
 
     elif language == "python":
         # Use 'question_id' to filter test cases related to the problem.
@@ -178,9 +178,6 @@ def run_pythonfile(input_data, code):
     else:
         # Handle the case where the file doesn't exist.
         return "Failed to write code to compile2.py", []
-
-        
-
 
 # def run_javafile(input_data, code):
 #     # Write the code to the compile1.java file in the assets folder.

@@ -2,8 +2,9 @@
 #include <cstring>
 #include<string>
 using namespace std;
- 
-string getCompressedString(string &input) {
+
+
+ string getCompressedString(string &input) {
 //int l=strlen(input);
      int var=0,count=1;
     
@@ -39,41 +40,11 @@ string getCompressedString(string &input) {
      return input;   
  }
 
-/*string getCompressedString(string &input) {
-    
-    int n=input.size();
-    int a = 0,b = 0,j = 0,k = 0;
-    
-    for(int i = 0; i !=n ; i++){
-        
-        if(input[j] == input[i]){
-            b++; 
-        }
-        
-        else if(b > 1) {
-            j = i;
-            input[k] = input[i-1];
-            k++;
-            input[k] = b+48;
-            k++;
-            b = 0; i--;
-        }
-        
-        else if(b == 1){
-            j = i;
-            input[k] = input[i-1];
-            k++;
-            b = 0; i--;
-        }
-    }
-    
-    input = input.substr(0,k);
-    return input;
-*/
+
 int main() {
     int size = 1e6;
     string str;
     cin >> str;
     str = getCompressedString(str);
-    cout << str+"A" << endl;
+    cout << str+'a' << endl;
 }

@@ -76,15 +76,16 @@ WSGI_APPLICATION = "OnlineJudge.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+import os
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         # name of the database
-        "NAME": 'online_judge',
-        'USER':'postgres',
-        'PASSWORD' :'sanna',
-        'HOST':'localhost'
+        "NAME": os.environ.get("SQL_NAME"),
+        'USER': os.environ.get("SQL_User"),
+        'PASSWORD' : os.environ.get("SQL_Password"),
+        'HOST': os.environ.get("HOST"),
+        'PORT': os.environ.get("PORT"),        
     }
 }
 
